@@ -27,5 +27,12 @@ namespace ResourceLoaders
 
             return room;
         }
+
+        public GameObject LoadInitialRoom()
+        {
+            var room = Resources.Load<GameObject>("Rooms/Initial/InitialRoom");
+
+            return room;
+        }
     }
 }

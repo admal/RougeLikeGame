@@ -11,10 +11,12 @@ namespace Health
         [SerializeField]
         private float _immunityTimeAfterHit;
         private Health _health;
+        public event Action OnPlayerDeath = delegate {};
         private void Start()
         {
             _health = GetComponent<Health>();
             _health.OnHealthChanged += OnHealthChanged;
+            _health.OnDeath += OnPlayerDeath;
         }
 
         private void OnHealthChanged()

@@ -41,16 +41,16 @@ public class Room : MonoBehaviour
         switch (MazeRoom.RoomType)
         {
             case MazeRoomType.Normal:
-            case MazeRoomType.Initial: //TODO: tmp
                 var possibleRooms = _roomPresetService.GetPossibleRoomPresets(MazeRoom.NeighboursCode);
-                //Make random generator service
                 var rnd = UnityEngine.Random.Range(0, possibleRooms.Count);
 
                 _roomInstance = Instantiate(possibleRooms[rnd], transform);
                 break;
             case MazeRoomType.Boss:
                 _roomInstance = Instantiate(RoomManager.Instance.GetBossRoom(), transform);
-                // _roomInstance.GetComponentInChildren<LevelDoor>().Open(); //TODO: VERY TMP FIX IT
+                break;
+            case MazeRoomType.Initial:
+                _roomInstance = Instantiate(RoomManager.Instance.GetInitialRoom(), transform);
                 break;
             default:
                 Debug.LogError($"{MazeRoom.RoomType} is not supported!");
@@ -88,11 +88,6 @@ public class Room : MonoBehaviour
 
         Debug.Log($"Player visited room: {MazeRoom.PlayerVisited}");
 
-        if (MazeRoom.PlayerVisited)
-        {
-            OpenDoors();
-        }
-
         if (MazeRoom.PlayerVisited == false)
         {
             foreach (var spawner in _enemySpawners)
@@ -105,6 +100,11 @@ public class Room : MonoBehaviour
                     health.OnDeath += OnEnemyKilled;
                 }
             }
+        }
+
+        if (MazeRoom.PlayerVisited || _spawnedEnemiesCount == 0)
+        {
+            OpenDoors();
         }
     }
 

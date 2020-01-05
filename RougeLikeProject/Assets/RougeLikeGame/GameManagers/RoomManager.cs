@@ -12,6 +12,7 @@ namespace GameManagers
 
         private GameObject[][] _roomPresets;
         private GameObject _bossRoom;
+        private GameObject _initialRoom;
 
         public void SetRoomPresets(GameObject[][] roomPresets)
         {
@@ -31,6 +32,16 @@ namespace GameManagers
         public GameObject GetBossRoom()
         {
             return _bossRoom;
+        }
+
+        public void SetInitialRoom(GameObject initialRoom)
+        {
+            _initialRoom = initialRoom;
+        }
+
+        public GameObject GetInitialRoom()
+        {
+            return _initialRoom;
         }
 
         public bool IsLoaded => _roomPresets != null && _roomPresets.Length > 0;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Hash;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameManagers
 {
@@ -42,6 +43,12 @@ namespace GameManagers
             }
 
             Hash = hash;
+        }
+
+        public void ResetGame()
+        {
+            LevelManager.Instance.Reset();
+            SceneManager.LoadScene("GameScene");
         }
     }
 }

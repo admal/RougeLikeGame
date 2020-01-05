@@ -34,6 +34,7 @@ namespace GameManagers
             RoomManager.Instance.SetRoomPresets(presets);
 
             RoomManager.Instance.SetBossRoom(loader.LoadBossRoom());
+            RoomManager.Instance.SetInitialRoom(loader.LoadInitialRoom());
         }
 
         public void LoadEnemiesPresets()

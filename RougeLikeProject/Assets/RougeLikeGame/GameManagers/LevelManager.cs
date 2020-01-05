@@ -9,13 +9,14 @@ namespace GameManagers
 {
     public class LevelManager
     {
-        private int _currentLevel = -1;
+        private int _currentLevel = 0;
         public int CurrentLevel => _currentLevel;
 
         private GameObject _mazeObject;
 
         public event Action OnStartLoadingLevel = delegate { };
         public event Action OnFinishedLoadingLevel = delegate { };
+        public event Action OnGameWon = delegate { };
 
         private static LevelManager _instance;
         public static LevelManager Instance
@@ -30,10 +31,19 @@ namespace GameManagers
             }
         }
 
-        private LevelManager() { }
+        private LevelManager()
+        {
+            Reset();
+        }
 
         public void GotoNextLevel()
         {
+            //TODO: make it better
+            if (_currentLevel == 3)
+            {
+                OnGameWon();
+            }
+
             _currentLevel++;
 
             OnStartLoadingLevel();
@@ -56,6 +66,11 @@ namespace GameManagers
 
 
             //DO GENERATION STUFF
+        }
+
+        public void Reset()
+        {
+            _currentLevel = 0;
         }
     }
 }

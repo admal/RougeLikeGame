@@ -13,6 +13,7 @@ namespace Player
 
         public Health.Health Health { get; private set; }
         public PlayerHealth PlayerHealth { get; private set; }
+        private PlayerMovement _playerMovement;
         public Vector3 Position { get => transform.position; set => transform.position = value; }
 
         private void Awake()
@@ -26,6 +27,9 @@ namespace Player
                 Instance = this;
                 Health = GetComponent<Health.Health>();
                 PlayerHealth = GetComponent<PlayerHealth>();
+                _playerMovement = GetComponent<PlayerMovement>();
+
+                PlayerHealth.OnPlayerDeath += () => _playerMovement.enabled = false;
             }
         }
     }
