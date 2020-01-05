@@ -12,7 +12,7 @@ namespace Items.ItemTypes
         public override void Apply(GameObject gameObject)
         {
             var health = gameObject.GetComponent<Health.Health>();
-            if (health != null)
+            if (health != null && health.CurrentHealth < health.MaxHealth)
             {
                 health.ChangeHealth(IncreaseHealthValue);                
             }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad8bc2bfc926a6488d08e693813baf5, type: 3}
-  m_Name: InitialPlayerStats
+  m_Script: {fileID: 11500000, guid: e4f05ca9bda443b4297c88714dc35cfe, type: 3}
+  m_Name: Experience
   m_EditorClassIdentifier: 
-  MaxHealth: 6
-  MovementSpeed: 1.5
-  IsFlying: 0
-  DodgeSpeed: 5
+  ItemName: Basic experience
+  ItemDescription: 
+  Sprite: {fileID: -7969836507740337112, guid: fff931b381a206b47b49d02cefd06658, type: 3}
+  ExperienceAmount: 9
